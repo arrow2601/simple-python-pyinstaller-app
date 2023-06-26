@@ -83,11 +83,10 @@ node {
             unstash(name: 'compiled-results')
             sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
             sh "pwd"
-            sh "ls"
-            sh "ls sources/"
+            sh "ls dist/"
         }
-
-        archiveArtifacts artifacts: "${env.BUILD_ID}/sources/dist/add2vals", fingerprint: true
+        
+        archiveArtifacts artifacts: "/sources/dist/add2vals", fingerprint: true
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
     }
    

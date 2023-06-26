@@ -82,6 +82,7 @@ node {
         dir("${env.BUILD_ID}") {
             unstash(name: 'compiled-results')
             sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
+            sh "mv add2vals dist/"
         }
         sh "./${env.BUILD_ID}/sources/dist/add2vals 10 20"
         // archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"

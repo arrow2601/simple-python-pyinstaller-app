@@ -91,7 +91,7 @@ node {
         sh "./sources/dist/add2vals 25 26"
         archiveArtifacts artifacts: "sources/dist/add2vals", fingerprint: true
         sh "sleep 1m"
-        sh "pkill -9 -f add2vals"
+        
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
     }
 }

@@ -79,7 +79,7 @@ node {
         input message: 'Lanjutkan ke tahap Deploy?'
     }
 
-    }
+    
     stage('Deploy') {
         def VOLUME = "${pwd()}/sources:/src"
         def IMAGE = 'cdrx/pyinstaller-linux:python2'
@@ -94,8 +94,8 @@ node {
         sh "pkill -9 -f add2vals"
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
     }
-   
 }
+
 
 
 // node {

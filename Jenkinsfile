@@ -27,7 +27,7 @@ node {
             sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
         }
 
-        archiveArtifacts "sources/dist/add2vals"
+        archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
         sh "cd sources/dist/"
         sh "./add2vals 10 20"
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"

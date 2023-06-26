@@ -76,8 +76,8 @@ node {
     }
 
     stage('Mannual Approval') {
-//         input message: 'Lanjutkan ke tahap Deploy?'
-//     }
+        input message: 'Lanjutkan ke tahap Deploy?'
+    }
 
     }
     stage('Deploy') {

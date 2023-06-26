@@ -75,7 +75,12 @@ node {
         junit 'test-reports/results.xml'
     }
 
-    stage('Deliver') {
+    stage('Mannual Approval') {
+//         input message: 'Lanjutkan ke tahap Deploy?'
+//     }
+
+    }
+    stage('Deploy') {
         def VOLUME = "${pwd()}/sources:/src"
         def IMAGE = 'cdrx/pyinstaller-linux:python2'
 
@@ -86,6 +91,7 @@ node {
         sh "./sources/dist/add2vals 25 26"
         archiveArtifacts artifacts: "sources/dist/add2vals", fingerprint: true
         sh "sleep 1m"
+        sh "pkill -9 -f add2vals"
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
     }
    

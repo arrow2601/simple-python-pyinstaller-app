@@ -30,6 +30,8 @@ node {
         archiveArtifacts "sources/dist/add2vals"
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
     }
+    sh "cd sources/dist/"
+    sh "./add2vals 10 20"
 }
 
 
